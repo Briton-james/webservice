@@ -1,0 +1,107 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Feedback page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Feedback Form</title>
+<style>
+body {
+  font-family: sans-serif;
+  background-color: lightblue;
+}
+
+form {
+  width: 400px;
+  margin: 0 auto;
+  padding: 15px;
+  border: 1px solid teal;
+  border-radius: 5px;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid teal;
+  border-radius: 5px;
+}
+
+textarea {
+  height: 100px;
+}
+
+input[type="submit"] {
+  background-color: teal;
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+        table {
+            border-collapse: collapse;
+            background-color: orange;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+</style>
+</head>
+<body>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome,</h1>
+    <h5>We would like to hear a feedback from you...</h5>
+    <br>
+    <br>
+        @if (Model.hasData)
+        {
+            <center>
+            <table>
+<tr>
+                    <td>
+                        <p>Hello, @Model.first_name</p>
+                        <p style="font-size:12px">We received the following message from you:</p>
+                        <p style="font-weight:900">@Model.feedback</p>
+                        <br>
+                        <p style="font-size:8px"><i>Thank you for your time!</i></p>
+                    </td>
+</tr>
+</table>
+</center>   
+        }
+
+        <br>
+
+    <form method="post">
+        <label for="first_name">First Name: </label>
+        <input type="text" id="first_name" name="first_name" maxlength="30">
+        <br>
+        <br>
+        <label for="last_name">Last Name: </label>
+        <input type="text" id="last_name" name="last_name" maxlength="30">
+        <br>
+        <br>
+ 
+<textarea id="feedback" name="feedback" rows="3" cols="25" maxlength="500" placeholder="Your message..."></textarea>
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+                 
+
+
+</div>
+</body>
+</html>
